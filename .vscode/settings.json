@@ -1,4 +1,4 @@
 {
     "python.pythonPath": "poc_explainable_ai\\Scripts\\python.exe",
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "autopep8"
 }

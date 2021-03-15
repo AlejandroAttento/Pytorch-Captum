@@ -4,6 +4,7 @@ from torch.utils.data import DataLoader
 import random
 import datetime
 import numpy as np
+import json
 
 class createDataLoader():
     def __init__(self, num_workers = multiprocessing.cpu_count()):
@@ -39,3 +40,20 @@ def secondsConverter(n, round = True):
     return str(datetime.timedelta(seconds = np.floor(n)))
   else:
     return str(datetime.timedelta(seconds = n))
+
+class createLog():
+    def __init__(self, log, json = False, file_name = datetime.datetime.now().strftime('%Y%m%d%H%M%S')):
+
+        self.log = log
+        self.json = json
+        self.file_name = file_name
+
+    def write(self):
+
+        if self.json:
+            self.log_str = json.dumps(self.log)
+        else:
+            self.log_str = self.log
+
+        with open("{}.txt".format(self.file_name), "w") as file:
+            file.write(self.log_str)
